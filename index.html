@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منكدة؟</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        *::selection {
+            background: #7d2ae8;
+            color: #fff;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fff;
+            margin: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 80vw;
+            max-width: 600px;
+            height: 60vh;
+            max-height: 400px;
+            background: none;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .start-image {
+            position: absolute;
+            top: -60px;
+            width: 100%;
+            z-index: 1;
+            object-fit: contain;
+        }
+
+        i {
+            font-size: 15vw;
+            color: #3498db;
+            border: 5px solid transparent;
+            outline: 3px solid #3498db;
+            border-radius: 50%;
+            z-index: 2;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 6vw;
+            color: #3498db;
+            margin: 10px 0 -150px; /* تم تخفيض قيمة الـ margin-bottom للنص ليظهر أكثر للأسفل */
+            z-index: 2;
+            position: relative;
+        }
+
+        .btn-group {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+            margin-top: 200px; /* تم تقليل قيمة الـ margin-top للأزرار */
+            margin-bottom: -200px; /* تم تخفيض قيمة الـ margin-bottom للأزرار ليظهر أكثر للأسفل */
+        }
+
+        button {
+            width: 150px;
+            height: 6vw;
+            font-size: 3vw;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid rgba(27, 31, 35, .15);
+            outline: none;
+            cursor: pointer;
+            background-color: #fc3f3f;
+            margin: 5px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-group button:nth-child(2) {
+            background-color: #00a568;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #fc3f3f;
+        }
+
+        button:focus {
+            box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+            outline: none;
+        }
+
+        button:disabled {
+            background-color: #fc3f3f;
+            border-color: rgba(27, 31, 35, .1);
+            color: rgba(255, 255, 255, 0.8);
+            cursor: default;
+        }
+
+        button:active {
+            background-color: #fc3f3f;
+            box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+        }
+
+        @media screen and (max-width: 600px) {
+            .wrapper {
+                width: 90vw;
+                max-width: none;
+                height: 70vh;
+                max-height: none;
+            }
+
+            i {
+                font-size: 20vw;
+            }
+
+            h2 {
+                font-size: 8vw;
+            }
+
+            .btn-group {
+                height: 10vh;
+            }
+
+            button {
+                width: 200px;
+                height: 8vw;
+                font-size: 4vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img class="start-image" src="https://i.giphy.com/ES4Vcv8zWfIt2.webp">
+        <h2 class="question">منكدة لساتك ؟</h2>
+        <div class="btn-group">
+            <button class="no-btn button-3">🦉اه</button>
+            <button class="yes-btn button-3">😊لا</button>
+        </div>
+    </div>
+    <script>
+        const yesBtn = document.querySelector('.yes-btn');
+        const noBtn = document.querySelector('.no-btn');
+        const startImage = document.querySelector('.start-image');
+
+        let currentIndex = 0;
+
+        noBtn.addEventListener('click', () => {
+            const question = document.querySelector('.question');
+            const noResponses = [
+                "تنكديش",
+                "عشاني",
+                "بجبلك شكلاطة البقرة",
+                "على اوريو",
+                "بجبلك بومة",
+                "طيب عصير تفاح ؟",
+                "طيب بجحركيش",
+                "خلص افردي وجك عاد",
+                "بكفي دلع"
+            ];
+            const images = [
+                "https://media.giphy.com/media/los0R5UJA9bOuTmK7t/giphy.gif?cid=790b761191rlh2hn4izbn9gy47aaba2h7l4raamii7gh3e4i&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+                "https://media.giphy.com/media/9uwnYUDw342pq/giphy.gif?cid=ecf05e47jji0ghff3lmf0j5ez3yd6z4e0etf2ybr2tehgoje&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmp1eGdhNHlsczQ3ZWN5eGRkMWcweXNuM3Zya3gyYjhkNTNha2RudCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WQZSYV5eqC7pMubXjS/giphy.gif",
+                "https://media.giphy.com/media/3o7TKnJM1WthzTLfa0/giphy.gif?cid=790b7611fqpvl9mf7cofqffo3xnc0sun4vrre0m97mtq00dd&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc252bmoxNW0wcHdsbm92OW4xcGtiN2t3dTgxOWIxdnNrNXdscmd2NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qISaMW1xwmvNS/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXhnbndjeGk1bjI0ZDFwaGNmamV2eDlraXdmZWJiNzlydnB2eTNpdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5kFc7wIAfghHrCfgfb/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnZ2cDkzZmJ1NnVzanlycWRkdjdmenc3djMyZmNiYWs0dnJybndueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LXr4IgnD4V8q4Febb5/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3h6Zng5eGYyYTNpc2draTN4bm5yY2p0ZmozbzI3Y202NDNycW44eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BY8ORoRpnJDXeBNwxg/giphy.gif"
+            ];
+            if (currentIndex < noResponses.length - 1) {
+                question.innerHTML = noResponses[currentIndex];
+                startImage.src = images[currentIndex];
+                currentIndex++;
+            } else {
+                noBtn.disabled = true;
+            }
+        });
+
+        yesBtn.addEventListener('click', () => {
+            const question = document.querySelector('.question');
+            question.innerHTML = 'هاي يارا الي بعرفها';
+            question.style.fontSize = '5vw';
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            startImage.src = "https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif?cid=790b76112sq0vaiozdq9o2ww449sb3ihnzp6p2r4pype1s72&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+        });
+    </script>
+</body>
+
+</html>
